@@ -126,46 +126,8 @@ void Dialog::KarpuzOlustur()
 
 void Dialog::KarpuzTiklandi()
 {
-    //kesilen karpuz sayısını hesaplamıyor
-    /* QPushButton *senderButton = qobject_cast<QPushButton*>(sender());
-    if (senderButton && karpuzButonlari.contains(senderButton)) {
-        QIcon *icon = new QIcon();
-        icon->addPixmap(QPixmap(":/resimler/images/2.png"), QIcon::Normal, QIcon::Off);
-        senderButton->setIcon(*icon);
-        senderButton->setIconSize(QSize(70, 70));
+    
 
-        QTimer::singleShot(2000, [senderButton, this](){
-            karpuzButonlari.removeOne(senderButton);
-            delete senderButton;
-        });
-    }*/
-//çalışan durmuyor
-   /* QPushButton *senderButton = qobject_cast<QPushButton*>(sender());
-    if (senderButton && karpuzButonlari.contains(senderButton)) {
-        QIcon *icon = new QIcon();
-        icon->addPixmap(QPixmap(":/resimler/images/2.png"), QIcon::Normal, QIcon::Off);
-        senderButton->setIcon(*icon);
-        senderButton->setIconSize(QSize(70, 70));
-
-        tıklananKarpuzSayisi++; // Tıklanan karpuz sayısını artır
-        ui->label_kesilen->setText("KESİLEN KARPUZ: <font color='green'>" + QString::number(tıklananKarpuzSayisi) + "</font>");
-
-
-        // Karpuz tıklandığında tıklandı özelliğini işaretle
-        senderButton->setProperty("tiklandi", true);}*/
-
-       /* QTimer::singleShot(2000, [senderButton, this](){
-             //Eğer karpuz hala listede ise ve tıklanmadıysa kaçırıldı olarak kabul edilir
-            if (karpuzButonlari.contains(senderButton) && !senderButton->property("tiklandi").toBool()) {
-                kacirilanKarpuzSayisi++; // Kaçırılan karpuz sayısını artır
-                ui->label_kacirilan->setText("KAÇIRILAN KARPUZ: " + QString::number(kacirilanKarpuzSayisi));
-            }
-            karpuzButonlari.removeOne(senderButton);
-            delete senderButton;
-        });*/
-
-
-//en sonnn
     QPushButton *senderButton = qobject_cast<QPushButton*>(sender());
     if (senderButton && karpuzButonlari.contains(senderButton)) {
         QIcon *icon = new QIcon();
@@ -213,23 +175,7 @@ bool Dialog::OkuKarpuzKonumlari(const QString &dosyaAdi)
 void Dialog::KarpuzHareketEttir()
 {
 
-   //HAREKETE DEVAM EDEN AMA DÜZGÜN ÇALIŞAN
-   /* foreach (QPushButton *karpuz, karpuzButonlari) {
-        karpuz->move(karpuz->x(), karpuz->y() + 10); // Karpuzları 10 piksel aşağı hareket ettir
-
-        // Eğer karpuz ekranın alt kısmına ulaşırsa
-        if (karpuz->y() > this->height()) {
-            // Eğer karpuz tıklanmadıysa kaçırılan karpuz sayısını artır
-            if (!karpuz->property("tiklandi").toBool()) {
-                kacirilanKarpuzSayisi++; // Kaçırılan karpuz sayısını artır
-                ui->label_kacirilan->setText("<font color='black'>KAÇIRILAN KARPUZ: </font><font color='red'>" + QString::number(kacirilanKarpuzSayisi) + "</font>");
-            }
-            karpuzButonlari.removeOne(karpuz);
-            delete karpuz;
-        }
-
-    }*/
-//TAM ÇALIŞAN
+   
     foreach (QPushButton *karpuz, karpuzButonlari) {
         if (karpuz->property("tiklandi").toBool()) {
             // Eğer karpuz tıklanmışsa hareketini durdur
@@ -277,7 +223,6 @@ void Dialog::BombaKarpuzOlustur()
 
 void Dialog::BombaKarpuzTiklandi()
 {
-    // Oyunu sonlandır
     OyunuSonlandir();
 }
 
